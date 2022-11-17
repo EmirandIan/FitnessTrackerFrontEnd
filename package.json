@@ -1,13 +1,15 @@
 {
   "dependencies": {
+    "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-router": "^6.4.3",
+    "react-router-dom": "^6.4.3",
     "react-scripts": "^5.0.1",
     "y": "^0.3.2"
   },
   "name": "project_08-frontend",
   "version": "1.0.0",
   "main": "index.js",
-  "devDependencies": {},
   "scripts": {
     "start": "react-scripts start",
     "test": "echo \"Error: no test specified\" && exit 1"
