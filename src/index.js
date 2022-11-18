@@ -1,9 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
-import { Homepage, Activity, ErrorPage, Routines, RoutineActivity, User,  } from './components/index'
-
-
+import { Homepage, Activity, ErrorPage, Routines, RoutineActivity, User, Register,Login  } from './components/index'
 
 const router = createBrowserRouter([
     {
@@ -26,31 +24,19 @@ const router = createBrowserRouter([
             {
                 path: "/User",
                 element: <User />
+            },
+            {
+                path: "/Register",
+                element: <Register />
+            },
+            {
+                path:"/Login",
+                element: <Login />
             }
-           
             
         ]
     }
 ])
 
-                
-            
-           
-        
-    
-
-
 ReactDOM.render(<RouterProvider router={router} />, document.getElementById("app"))
 
-
-// import React from "react-dom
-// function Homepage ( {
-//     reutrn(
-//         <div>
-//             <p>"hello world"</p>
-//             </div>
-//     )
-// }
-
-// ReactDOM.render(<Homepage />, document)
-        
