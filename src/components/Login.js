@@ -19,7 +19,7 @@ const Login = () =>{
                   password: password
                 })
             })
-            const userData  = response.json()
+            const userData  = await response.json()
             console.log(userData)
             if(userData.token) {
                 localStorage.setItem("token",userData.token)

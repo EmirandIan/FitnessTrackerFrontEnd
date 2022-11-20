@@ -18,7 +18,6 @@ const Register = () =>{
                 })
             })
             const userData  = response.json()
-
             console.log(userData);
         } catch(error){
             console.log(error)
