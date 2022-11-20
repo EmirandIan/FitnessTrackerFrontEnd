@@ -1,7 +1,12 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
-import { Homepage, Activity, ErrorPage, Routines, RoutineActivity, User, Register,Login  } from './components/index'
+import { Homepage, Activities, ErrorPage, Routines, RoutineActivity, User, Register,Login,  } from './components/index'
+
+
+
+
+
 
 const router = createBrowserRouter([
     {
@@ -10,8 +15,8 @@ const router = createBrowserRouter([
         errorElement: <ErrorPage />,
         children: [    
             {
-                path: "/Activity",
-                element: <Activity />
+                path: "/Activities",
+                element: <Activities />
             },
             {
                 path: "/Routines",
