@@ -1,0 +1,17 @@
+*{
+    background-color:#CBCBD4;
+}
+
+#flexContainer{
+    background-color:#D1B490;
+    display:flex;
+    justify-content: space-between;
+    flex-direction: row;
+    padding:1em;
+    
+}
+
+span a{
+    background-color:#D1B490;
+    text-decoration:none;
+}
