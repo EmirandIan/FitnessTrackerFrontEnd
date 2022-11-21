@@ -1,31 +1,57 @@
-import React from "react";
-import { useNavigate } from "react-router-dom";
-import { createActivity } from "../api";
+import React,{useState} from "react";
+import {useOutletContext} from 'react-router-dom';
 
-const CreateActivity = ({activity, setActivity}) => {
-    const navigate = useNavigate();
-    const handleSubmit = async (event) => {
+const CreateActivity = () => {
+    const [name,setNamer] = useState("");
+    const [description, setDescription] = useState("");
+    const {activityObj: [activities, setActivities]} = useOutletContext();
+    // POST /api/activities
+    async function formSubmitHandler(event){
         event.preventDefault();
-        const name = event.target[0].value;
-        const description = event.target[1].value;
-        const storedToken = window.localStorage.getItem('Token');
-        console.log(name, description, storedToken)
-        const userActivities = await createActivity(storedToken, name, description);
-        navigate("/activities")
+        // const postActivity = async (name, description)=> {
+            try {
+            const response = await fetch(`http://fitnesstrac-kr.herokuapp.com/api/activities`, {
+                method: "POST",
+                headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${localStorage.getItem("token")}`
+                },
+                body: JSON.stringify({
+                    name,
+                    description 
+                })
+            })
+            
+            const result = await response.json();
+            setActivities([...activities, result])
+            
+            } catch(error) {
+            console.log(error)
+            }
+        
     }
 
-    return (
-        <div>
-            <form onSubmit={handleSubmit}>
-                <h2>Create an activity:</h2>
-                <label>Activity Name: </label>
-                <input type="text" placeholder="Enter activity" required/>
-                <label>Description: </label>
-                <input type="text" placeholder="Enter description" required/>
-                <button type="submit">Submit</button>
-            </form>
-        </div>
+    const createNameState = (event)=>{
+        setNamer(event.target.value)
+    }
+    const createDescriptionState = (event)=>{
+        setDescription(event.target.value)
+    }
+    return(
+    <div>
+        <form onSubmit={formSubmitHandler}>
+            <label> CREATE NEW ACTIVITY</label>
+            <label>Activity Name </label>
+            <input value={name} onChange={createNameState} type="text"/>
+
+            <label>Fill in the description</label>
+            <input value={description} onChange={createDescriptionState} type="text"/>
+
+            <button type="submit">create new activity</button>
+        </form>
+    </div>
     )
+
 }
 
 export default CreateActivity;
