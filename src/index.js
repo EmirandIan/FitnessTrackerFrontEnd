@@ -4,12 +4,10 @@ import ReactDOM from 'react-dom';
 import {createBrowserRouter,RouterProvider} from 'react-router-dom';
 import { Homepage, Activities, ErrorPage, Routines, 
     RoutineActivity, User, Register,Login,
-     CreateActivity, CreateRoutine  } from './components/index'
+     CreateActivity, CreateRoutine,RoutineId,
+    EditRoutine, EditActivities,ActivityId } from './components/index'
 const appElement =document.getElementById('app');
 const root = createRoot(appElement);
-
-
-
 
 const router = createBrowserRouter([
     {
@@ -48,6 +46,18 @@ const router = createBrowserRouter([
             {
                 path:'/newRoutine',
                 element:<CreateRoutine/>
+            },
+            {
+                path:'Routines/:id',
+                element:<RoutineId/>
+            },
+            {
+                path:'/Routines/:id/EditRoutine',
+                element:<EditRoutine/>
+            },
+            {
+                path:'/Activities/:id',
+                element:<ActivityId/>
             }
         ]
     }

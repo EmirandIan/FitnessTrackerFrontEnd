@@ -16,3 +16,5 @@ async function deleteRoutine(id){
         }
     }
 }
+
+export default deleteRoutine;

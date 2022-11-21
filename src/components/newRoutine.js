@@ -8,6 +8,7 @@ const CreateRoutine = () =>{
     async function formSubmitHandler(event){
         event.preventDefault();
         try{
+            if(!name&&!goal)return
             const response = await fetch("https://fitnesstrac-kr.herokuapp.com/api/routines",{
                 method: "POST",
                 headers: {
@@ -24,6 +25,7 @@ const CreateRoutine = () =>{
             console.log(response)
             console.log(result)
             setRoutines([...routines, result]);
+            
         } catch(error){
             console.log(error)
         }
