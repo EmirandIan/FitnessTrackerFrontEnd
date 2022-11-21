@@ -1,49 +1,38 @@
 import React from "react"
-import { useState, useEffect } from 'react';
-import { getAllRoutines } from '../api';
-import { Link } from 'react-router-dom';
+import CreateRoutine from "./newRoutine";
+import {useOutletContext} from 'react-router-dom';
 
+const Routines = () => {
+  const {routineObj:[routines,setRoutines]} = useOutletContext();
 
-const Routines = ({allActivities} ) => {
-    const [allRoutines, setAllRoutines] = useState([]);
-        useEffect(()=> {
-            async function fetchRoutines(){
-                if(!allRoutines.length){
-                    const retrievedRoutines = await getAllRoutines();
-                    setAllRoutines(retrievedRoutines);
-                }
-            }
-            fetchRoutines();
-        }, []);
-    
-    const reverseList = allRoutines.slice(0).reverse();
-    const displayRoutines = allRoutines.length ? (
-      <div>
-        {reverseList.map((element, index) => {
-          return (
-            <div key={index}>
-              <h2>Creator:</h2>{element.creatorName}
-              <h2>Routine Title:</h2> {element.name}
-              <h2>Routine Goal</h2>{element.goal}
-              {element.activities.map((activity, index) => (
-                <div key={index}>
-                  Activity Name:{activity.name}
-                  <h2> Activity Description:</h2>{activity.description}
-                  <h2> Duration:</h2>{activity.duration}
-                  <h2> Count:</h2>{activity.count}
-                </div>
-              ))}
+  //get routines and look at them
+  console.log(routines);
+  const rRoutines = [...routines].reverse();
+  console.log(rRoutines)
+  
+  
+  return (
+    <div>
+      <CreateRoutine/>
+      {rRoutines.map((routine,idx)=>{
+        return(
+          routine.isPublic?
+          <div>
+            <div key={idx}>
+            <div className="name">
+          {routine.name}
             </div>
-          );}
-        )}
-      </div>
-    ) : (
-      <div>Loading Routines...</div>
-    );
-    return(
-      <div>
-           {displayRoutines}
-      </div>
-    );
+            </div>
+            <div className="goal">{routine.goal}</div>
+            </div>
+
+          :<div></div>
+      )
+    })
+    }
+
+    <div> Routines </div>
+    </div>
+  )
 }
 export default Routines;
