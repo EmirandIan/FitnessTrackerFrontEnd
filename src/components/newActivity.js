@@ -16,8 +16,8 @@ const CreateActivity = () => {
                 'Authorization': `Bearer ${localStorage.getItem("token")}`
                 },
                 body: JSON.stringify({
-                    name,
-                    description 
+                    name:name,
+                    description:description 
                 })
             })
             

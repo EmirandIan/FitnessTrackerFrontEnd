@@ -1,6 +1,6 @@
 import React from "react"
 import CreateRoutine from "./newRoutine";
-import {useOutletContext} from 'react-router-dom';
+import {useOutletContext, Link} from 'react-router-dom';
 
 const Routines = () => {
   const {routineObj:[routines,setRoutines]} = useOutletContext();
@@ -20,7 +20,7 @@ const Routines = () => {
           <div>
             <div key={idx}>
             <div className="name">
-          {routine.name}
+          <Link to={`/Routines/${routine.id}`}>{routine.name}</Link>
             </div>
             </div>
             <div className="goal">{routine.goal}</div>
