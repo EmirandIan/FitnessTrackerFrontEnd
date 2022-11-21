@@ -9,7 +9,7 @@ const Login = () =>{
     async function formSubmitHandler(event){
         event.preventDefault(); //what is this??
         try{
-            const response = await fetch('http://fitnesstrac-kr.herokuapp.com/api/users/login', {
+            const response = await fetch('https://fitnesstrac-kr.herokuapp.com/api/users/login', {
                 method: "POST",
                 headers: {
                   'Content-Type': 'application/json',

@@ -15,7 +15,7 @@ const User = () =>{
                 console.log("you are not logged in")
                 return;
             }
-            const response = await fetch('http://fitnesstrac-kr.herokuapp.com/api/users/me', {
+            const response = await fetch('https://fitnesstrac-kr.herokuapp.com/api/users/me', {
                 headers: {
                   'Content-Type': 'application/json',
                   'Authorization': `Bearer ${localStorage.getItem("token")}`
@@ -36,7 +36,7 @@ const User = () =>{
                 console.log("user not set")
                 return;
             }
-            const response = await fetch(`http://fitnesstrac-kr.herokuapp.com/api/users/${username}/routines`,
+            const response = await fetch(`https://fitnesstrac-kr.herokuapp.com/api/users/${username}/routines`,
             {
                 headers: {
                   'Content-Type': 'application/json',
@@ -54,7 +54,7 @@ const User = () =>{
     async function deleteRoutine(id){
 
         try{
-            const response = await fetch(`http://fitnesstrac-kr.herokuapp.com/api/routines/${id}`, {
+            const response = await fetch(`https://fitnesstrac-kr.herokuapp.com/api/routines/${id}`, {
                 method: "DELETE",
                 headers: {
                   'Content-Type': 'application/json',
@@ -72,7 +72,7 @@ const User = () =>{
         event.preventDefault();
         console.log("this is what I'm sending to " ,id)
         try{
-            const response = await fetch(`http://fitnesstrac-kr.herokuapp.com/api/routines/${id}`, 
+            const response = await fetch(`https://fitnesstrac-kr.herokuapp.com/api/routines/${id}`, 
             {
                 method: "PATCH",
                 headers: {
@@ -119,12 +119,8 @@ const User = () =>{
                     return(
                         <div>
                         <div className="routineBox">
-                        <div className="routineName">
                             {routine.name}
-                        </div>
-                        <div className="routineGoal">
                             {routine.goal}
-                        </div>
                         
                             <button onClick={(event) =>{event.preventDefault()
                             deleteRoutine(routine.id)}}>Delete?</button>

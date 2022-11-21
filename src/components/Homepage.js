@@ -9,7 +9,7 @@ const Homepage = () => {
 
     async function getRoutines(setter){
         try{
-            const response = await fetch(`http://fitnesstrac-kr.herokuapp.com/api/routines`, {
+            const response = await fetch(`https://fitnesstrac-kr.herokuapp.com/api/routines`, {
                 headers: {
                   'Content-Type': 'application/json',
                 },
@@ -24,7 +24,7 @@ const Homepage = () => {
 
     async function getActivities(setter){
         try{
-            const response = await fetch('http://fitnesstrac-kr.herokuapp.com/api/activities', {
+            const response = await fetch('https://fitnesstrac-kr.herokuapp.com/api/activities', {
                 headers: {
                   'Content-Type': 'application/json',
                 }
