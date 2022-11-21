@@ -8,7 +8,6 @@ const CreateActivity = () => {
     // POST /api/activities
     async function formSubmitHandler(event){
         event.preventDefault();
-        // const postActivity = async (name, description)=> {
             try {
             const response = await fetch(`http://fitnesstrac-kr.herokuapp.com/api/activities`, {
                 method: "POST",
@@ -28,7 +27,6 @@ const CreateActivity = () => {
             } catch(error) {
             console.log(error)
             }
-        
     }
 
     const createNameState = (event)=>{

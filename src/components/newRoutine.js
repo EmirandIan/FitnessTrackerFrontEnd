@@ -28,6 +28,7 @@ const CreateRoutine = () =>{
             console.log(error)
         }
     }
+
     const createNameState = (event)=>{
         setNamer(event.target.value)
     }
@@ -41,11 +42,14 @@ const CreateRoutine = () =>{
             <label> CREATE NEW ROUTINE</label>
             <label>Routine Name </label>
             <input value={name} onChange={createNameState} type="text"/>
+
             <label>Fill in the Goal!!!</label>
             <input value={goal} onChange={createGoalState} type="text"/>
+
             <button type="submit">create new routine</button>
         </form>
         </div>
     )
 }
+
 export default CreateRoutine;

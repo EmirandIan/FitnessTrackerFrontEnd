@@ -1,4 +1,9 @@
 *{
+
+    background-color:#8AA8A1;
+    background-color:#D1B490;
+    background-color:#EE7B30;
+    background-color:#885A89;
     background-color:#CBCBD4;
 }
 
@@ -14,4 +19,8 @@
 span a{
     background-color:#D1B490;
     text-decoration:none;
+}
+
+.routineBox{
+    background-color:#EE7B30;
 }

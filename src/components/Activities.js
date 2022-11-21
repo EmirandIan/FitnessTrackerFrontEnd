@@ -1,8 +1,11 @@
 import React, { useState, useEffect } from "react";
 import CreateActivity from './newActivity';
+
 import {useOutletContext} from 'react-router-dom';
+
 const Activities = () =>{
     const {activityObj : [activities,setActivities] } = useOutletContext();
+
     const rActivities = [...activities].reverse();
     console.log(rActivities);
     return (

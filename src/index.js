@@ -1,9 +1,12 @@
-import React from 'react'
-import ReactDOM from 'react-dom'
-import { createBrowserRouter, RouterProvider } from 'react-router-dom'
-import { Homepage, Activities, ErrorPage, Routines, RoutineActivity, User, Register,Login,  } from './components/index'
-
-
+import {createRoot} from 'react-dom/client';
+import React from 'react';
+import ReactDOM from 'react-dom';
+import {createBrowserRouter,RouterProvider} from 'react-router-dom';
+import { Homepage, Activities, ErrorPage, Routines, 
+    RoutineActivity, User, Register,Login,
+     CreateActivity, CreateRoutine  } from './components/index'
+const appElement =document.getElementById('app');
+const root = createRoot(appElement);
 
 
 
@@ -37,11 +40,18 @@ const router = createBrowserRouter([
             {
                 path:"/Login",
                 element: <Login />
+            },
+            {
+                path:'/newActivity',
+                element:<CreateActivity />
+            },
+            {
+                path:'/newRoutine',
+                element:<CreateRoutine/>
             }
-            
         ]
     }
 ])
 
-ReactDOM.render(<RouterProvider router={router} />, document.getElementById("app"))
+root.render(<RouterProvider router={router} />)
 
