@@ -1,55 +1,57 @@
 import React, { useState } from 'react';
-import { createRoutine } from '../api';
-import { useParams, useNavigate } from 'react-router-dom';
+import{useOutletContext} from 'react-router-dom'
 
+const CreateRoutine = () =>{
+    const [name,setNamer] = useState("");
+    const [goal,setGoal] = useState("");
+    const [isPublic,setIsPublic] = useState(true);
+    const {routineObj: [routines,setRoutines]} = useOutletContext();
 
-const createRoutine = (token, { fetchRoutines, navigate }) => {
-    const [name, setName] = useState('');
-    const [goal, setGoal] = useState('');
-    const [routines, setRoutines] = useState([]);
-    const { routineId} = useParams();
-    const navigate1 = useNavigate();
-
-    async function fetchRoutines() {
-
-        const results = await getRoutines()
-        setRoutines(results.data);
-    }
-    async function addRoutine() {
-        const newRoutine = {
-            name: name,
-            goal: goal,
-            isPublic: true
-
+    async function formSubmitHandler(event){
+        event.preventDefault();
+        try{
+            const response = await fetch("http://fitnesstrac-kr.herokuapp.com/api/routines",{
+                method: "POST",
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${localStorage.getItem("token")}`
+                },
+                body: JSON.stringify({
+                    name:name,
+                    goal: goal,
+                    isPublic: isPublic
+                })
+            })
+            const result = await response.json();
+            console.log(response)
+            console.log(result)
+            setRoutines([...routines, result]);
+        } catch(error){
+            console.log(error)
         }
-        const storedToken = window.localStorage.getItem('Token');
-        const results = await createRoutine(storedToken, newRoutine)
-        fetchRoutines();
-        navigate1(`/routines`)
     }
 
-    return (
-        <form onSubmit={(event) => {
-            event.preventDefault();
-            addRoutine();
-        }}>
-            <label>Enter routine name</label>
-            <br></br>
-            <input
-                type='text'
-                onChange={(event) => setName(event.target.value)} />
-            <br></br>
-            <label>Enter goal </label>
-            <br></br>
-            <input
-                type='text'
-                onChange={(event) => setGoal(event.target.value)} />
-            <br></br>
-            <button type='submit'>Submit New Post</button>
+    const createNameState = (event)=>{
+        setNamer(event.target.value)
+    }
+    const createGoalState = (event)=>{
+        console.log(event.target.value)
+        setGoal(event.target.value)
+    }
+    return(
+        <div>
+            <form onSubmit={formSubmitHandler}>
+            <label> CREATE NEW ROUTINE</label>
+            <label>Routine Name </label>
+            <input value={name} onChange={createNameState} type="text"/>
+
+            <label>Fill in the Goal!!!</label>
+            <input value={goal} onChange={createGoalState} type="text"/>
+
+            <button type="submit">create new routine</button>
         </form>
+        </div>
     )
 }
 
-export default createRoutine;
-
-
+export default CreateRoutine;

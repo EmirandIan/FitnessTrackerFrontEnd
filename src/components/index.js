@@ -7,3 +7,5 @@ export { default as User } from "./User";
 export { default as RoutineActivity } from "./RoutineActivity"
 export { default as Register} from "./Register"
 export { default as Login} from "./Login"
+export {default as CreateActivity} from "./newActivity"
+export {default as CreateRoutine} from "./newRoutine";
