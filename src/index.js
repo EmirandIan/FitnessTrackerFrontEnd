@@ -5,8 +5,6 @@ import {createBrowserRouter,RouterProvider} from 'react-router-dom';
 import { Homepage, Activities, ErrorPage, Routines, 
     RoutineActivity, User, Register,Login,
      CreateActivity, CreateRoutine  } from './components/index'
-
-
 const appElement =document.getElementById('app');
 const root = createRoot(appElement);
 

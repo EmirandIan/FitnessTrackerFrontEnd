@@ -1,12 +1,10 @@
 import React, { useState } from 'react';
 import{useOutletContext} from 'react-router-dom'
-
 const CreateRoutine = () =>{
     const [name,setNamer] = useState("");
     const [goal,setGoal] = useState("");
     const [isPublic,setIsPublic] = useState(true);
     const {routineObj: [routines,setRoutines]} = useOutletContext();
-
     async function formSubmitHandler(event){
         event.preventDefault();
         try{

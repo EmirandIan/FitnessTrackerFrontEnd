@@ -18,12 +18,10 @@ const Activities = () =>{
                   </div>
                   {activity.name}
                   {activity.description}
-
                 </div>
             )
             })}
         </div>
     )
 }
-
 export default Activities;
