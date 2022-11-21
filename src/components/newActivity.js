@@ -9,7 +9,7 @@ const CreateActivity = () => {
     async function formSubmitHandler(event){
         event.preventDefault();
             try {
-            const response = await fetch(`http://fitnesstrac-kr.herokuapp.com/api/activities`, {
+            const response = await fetch(`https://fitnesstrac-kr.herokuapp.com/api/activities`, {
                 method: "POST",
                 headers: {
                 'Content-Type': 'application/json',

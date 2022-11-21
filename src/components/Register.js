@@ -5,9 +5,9 @@ const Register = () =>{
     const [password, setPassword]= useState("");
 
     async function formSubmitHandler(event){
-        event.preventDefault(); //what is this??
+        event.preventDefault(); 
         try{
-            const response = await fetch('http://fitnesstrac-kr.herokuapp.com/api/users/register', {
+            const response = await fetch('https://fitnesstrac-kr.herokuapp.com/api/users/register', {
                 method: "POST",
                 headers: {
                   'Content-Type': 'application/json',
