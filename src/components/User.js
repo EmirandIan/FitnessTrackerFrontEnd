@@ -117,36 +117,38 @@ const User = () =>{
             Routines
                 {rMyRoutines.map((routine,idx)=>{
                     return(
-                        <div>
+                        //Take the code on line 119 of users.js in components, 
+                        //turn it into a component, and give it local state for the inputs, 
+                        //and it will separate the state for each routine
+
                         <div className="routineBox">
-                            {routine.name}
-                            {routine.goal}
-                        
-                            <button onClick={(event) =>{event.preventDefault()
-                            deleteRoutine(routine.id)}}>Delete?</button>
+                                {routine.name}
+                                {routine.goal}
+                            
+                                <button onClick={(event) =>{event.preventDefault()
+                                deleteRoutine(routine.id)}}>Delete?</button>
 
-                        <div>
-                            <form  onSubmit={editRoutine}>
-                                
-                                <label>
-                                    Change routine name
-                                </label>
-                                <input value={name} onChange={createNameState} type="text"/>
+                            <div>
+                                <form  onSubmit={editRoutine}>
+                                    
+                                    <label>
+                                        Change routine name
+                                    </label>
+                                    <input value={name} onChange={createNameState} type="text"/>
 
-                                <label>
-                                    Change routine goal
-                                </label>
-                                <input value={goal} onChange={createGoalState} type="text"/>
-                            <button onClick={(event)=>{event.preventDefault()
-                            editRoutine(routine.id)}}>Update routine?</button>
-                            </form>
-                        </div>   
+                                    <label>
+                                        Change routine goal
+                                    </label>
+                                    <input value={goal} onChange={createGoalState} type="text"/>
+                                <button onClick={(event)=>{event.preventDefault()
+                                editRoutine(routine.id)}}>Update routine?</button>
+                                </form>
+                            </div>   
                         </div>                
-                        </div>
+                    
                     )
                 })}
             </div>
-
         </nav>
     </div>
     )
